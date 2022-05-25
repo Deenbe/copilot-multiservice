@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: 2010-09-09
 
 Mappings: 
   AccountMap: 
-    264126593162: 
+    '264126593162': 
       VpcId: vpc-09c4429329f753e0c
       EnvironmentName: Test
       DatabaseSubnets: subnet-0ad9e870f74801f17, subnet-0ffa2a27c68f0782d, subnet-0b0e529004420cce1
