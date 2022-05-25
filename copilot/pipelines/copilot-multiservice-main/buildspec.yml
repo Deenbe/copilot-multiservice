@@ -12,6 +12,7 @@ phases:
       - wget -q https://ecs-cli-v2-release.s3.amazonaws.com/copilot-linux-v1.18.1
       - mv ./copilot-linux-v1.18.1 ./copilot-linux
       - chmod +x ./copilot-linux
+      - cp -r copilot/templates infrastructure/
   build:
     commands:
       - echo "Run your tests"
