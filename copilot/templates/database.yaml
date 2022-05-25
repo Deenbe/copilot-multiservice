@@ -1,7 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
 
-Parameters:
-  
 Mappings: 
   AccountMap: 
     264126593162: 
