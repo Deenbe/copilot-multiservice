@@ -1,0 +1,23 @@
+Parameters:
+  App:
+    Type: String
+    Description: Your application's name.
+  Env:
+    Type: String
+    Description: The environment name your service, job, or workflow is being deployed to.
+  Name:
+    Type: String
+    Description: The name of the service, job, or workflow being deployed.
+Resources:
+  ServiceSSMParameter:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: !Join ['-',[!Ref App,!Ref Env,'ServiceName']]
+      Type: String
+      Value: !Ref Name
+      Description: Example Parameter created as part of addons by copilot
+      Tier: Standard
+Outputs:
+  ParameterName:
+    Value: !Ref ServiceSSMParameter
+    Description: The SSM Parameter Name
