@@ -1,19 +1,12 @@
 AWSTemplateFormatVersion: 2010-09-09
 
 Parameters:
-  App:
-    Type: String
-    Description: Your application's name.
-  Env:
-    Type: String
-    Description: The environment name your service, job, or workflow is being deployed to.
-  Name:
-    Type: String
-    Description: The name of the service, job, or workflow being deployed.
+  
 Mappings: 
-  EnvironmentMap: 
-    Test: 
+  AccountMap: 
+    264126593162: 
       VpcId: vpc-09c4429329f753e0c
+      EnvironmentName: Test
       DatabaseSubnets: subnet-0ad9e870f74801f17, subnet-0ffa2a27c68f0782d, subnet-0b0e529004420cce1
       NotificationEmail: jonesaws@amazon.com
 Resources:
@@ -21,13 +14,13 @@ Resources:
     Type: AWS::SNS::Topic
     Properties:
       Subscription:
-      - Endpoint: !FindInMap [EnvironmentMap, !Ref Env, NotificationEmail]
+      - Endpoint: !FindInMap [AccountMap, !Ref AWS::AccountId, NotificationEmail]
         Protocol: email
   AppSecurityGroup: 
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupDescription: Limited SG for App
-      VpcId: !FindInMap [EnvironmentMap, !Ref Env, VpcId]
+      VpcId: !FindInMap [AccountMap, !Ref AWS::AccountId, VpcId]
   MonitoringIAMRole: 
     Type: AWS::IAM::Role
     Properties: 
@@ -69,11 +62,11 @@ Resources:
     Type: "AWS::RDS::DBSubnetGroup"
     Properties: 
       DBSubnetGroupDescription: Subnet Group for Aurora
-      SubnetIds: !FindInMap [EnvironmentMap, !Ref Env, DatabaseSubnets]
+      SubnetIds: !FindInMap [AccountMap, !Ref AWS::AccountId, DatabaseSubnets]
   DBSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      VpcId: !FindInMap [EnvironmentMap, !Ref Env, VpcId]
+      VpcId: !FindInMap [AccountMap, !Ref AWS::AccountId, VpcId]
       GroupDescription: Database Security Group
       SecurityGroupIngress:
         - ToPort: 3306
