@@ -28,6 +28,7 @@ stages:
         database:
           stack_name: multiapp-db
           template_path: infrastructure/database.yaml
+          template_config: infrastructure/database.params.json
         web:
           depends_on: [database,scheduler]
         scheduler:
