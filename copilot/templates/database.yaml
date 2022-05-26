@@ -51,6 +51,7 @@ Resources:
     Properties:
       Description: Aurora Cluster Parameter Group
       Family: aurora-mysql5.7
+      Parameters: Australia/Sydney
   DBParamGroup:
     Type: AWS::RDS::DBParameterGroup
     Properties:
@@ -60,7 +61,7 @@ Resources:
     Type: "AWS::RDS::DBSubnetGroup"
     Properties: 
       DBSubnetGroupDescription: Subnet Group for Aurora
-      SubnetIds: !FindInMap [AccountMap, !Ref AWS::AccountId, DatabaseSubnets]
+      SubnetIds: !Split [",", !FindInMap [AccountMap, !Ref AWS::AccountId, DatabaseSubnets] ]
   DBSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
