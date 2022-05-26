@@ -51,7 +51,8 @@ Resources:
     Properties:
       Description: Aurora Cluster Parameter Group
       Family: aurora-mysql5.7
-      Parameters: Australia/Sydney
+      Parameters: 
+        time_zone: Australia/Sydney
   DBParamGroup:
     Type: AWS::RDS::DBParameterGroup
     Properties:
