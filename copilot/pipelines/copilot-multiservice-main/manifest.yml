@@ -26,7 +26,7 @@ stages:
       name: test
       deployments:
         database:
-          stack_name: multiapp-db
+          stack_name: multiappdb
           template_path: infrastructure/database.yaml
           template_config: infrastructure/database.params.json
         web:
