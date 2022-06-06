@@ -25,14 +25,13 @@ stages:
     - # The name of the environment.
       name: test
       deployments:
-        database:
-          stack_name: multiappdb
-          template_path: infrastructure/database.yaml
-          template_config: infrastructure/database.params.json
+        #database:
+        #  stack_name: multiappdb
+        #  template_path: infrastructure/database.yaml
+        #  template_config: infrastructure/database.params.json
         web:
-          depends_on: [database,scheduler]
+          depends_on: [scheduler]
         scheduler:
-          depends_on: [database]
       # Optional: flag for manual approval action before deployment.
       # requires_approval: true
       # Optional: use test commands to validate this stage of your build.
