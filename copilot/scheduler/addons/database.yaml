@@ -86,7 +86,7 @@ Resources:
     DeletionPolicy: Delete
     Properties:
       DBClusterParameterGroupName: !Ref DBClusterParameterGroup
-      DatabaseName: !Join ['',[!Ref App,!Ref Env,'Db']]
+      DatabaseName: !Join ['',['Demo',!Ref Env,'Db']]
       DBSubnetGroupName: !Ref RDSSubnetGroup
       Engine: aurora-mysql
       EngineVersion: 5.7.mysql_aurora.2.09.2
