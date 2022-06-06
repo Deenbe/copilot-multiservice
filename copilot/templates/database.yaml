@@ -215,6 +215,9 @@ Resources:
       Tier: Standard
   
 Outputs:
+  DatabaseClusterName:
+    Description: The name of the database cluster
+    Value: !Ref RDSCluster
   ReaderEndpoint:
     Description: Cluster Reader Endpoint
     Value: !GetAtt RDSCluster.ReadEndpoint.Address

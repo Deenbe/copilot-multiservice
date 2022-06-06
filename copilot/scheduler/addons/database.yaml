@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: 2010-09-09
+Parameters:
+  App:
+    Type: String
+    Description: Your application's name.
+  Env:
+    Type: String
+    Description: The environment name your service, job, or workflow is being deployed to.
+  Name:
+    Type: String
+    Description: The name of the service, job, or workflow being deployed.
+Resources:
+  RDSCluster:
+    Type: 'AWS::RDS::DBCluster'
+    DeletionPolicy: Delete
+    Properties:
+      SourceDBClusterIdentifier: demodb-rdscluster-hrliwn46hn58
+      RestoreType: copy-on-write
+      Engine: aurora-mysql
+      UseLatestRestorableTime: true
+Outputs:
+  DbReaderEndpoint:
+    Description: Cluster Reader Endpoint
+    Value: !GetAtt RDSCluster.ReadEndpoint.Address
+  DbWriterEndpoint:
+    Description: Cluster Writer Endpoint
+    Value: !GetAtt RDSCluster.Endpoint.Address
