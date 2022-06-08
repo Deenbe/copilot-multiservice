@@ -27,6 +27,8 @@ stages:
       deployments:
         web:
           depends_on: [scheduler]
+        admin:
+          depends_on: [scheduler]
         scheduler:
       # Optional: flag for manual approval action before deployment.
       # requires_approval: true

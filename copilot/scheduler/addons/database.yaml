@@ -23,26 +23,7 @@ Resources:
       Subscription:
       - Endpoint: !FindInMap [AccountMap, !Ref AWS::AccountId, NotificationEmail]
         Protocol: email
-  AppSecurityGroup: 
-    Type: AWS::EC2::SecurityGroup
-    Properties:
-      GroupDescription: Limited SG for App
-      VpcId: !FindInMap [AccountMap, !Ref AWS::AccountId, VpcId]
-  MyRDSInstanceRotationSecret:
-    Type: AWS::SecretsManager::Secret
-    Properties:
-      Name: !Join ['-',[!Ref AWS::StackName,'DbCredentials']]
-      Description: Generated Admin RDS Credentials
-      GenerateSecretString:
-        SecretStringTemplate: '{"username": "admin"}'
-        GenerateStringKey: 'password'
-        PasswordLength: 16
-        ExcludeCharacters: '"@/\'
-    
 Outputs:
-  ApplicationSecurityGroup:
-    Description: App DB Access Security Group
-    Value: !Ref AppSecurityGroup
-  DatabaseCredentials:
-    Description: The Database credentials from secrets manager
-    Value: !Ref MyRDSInstanceRotationSecret
+  DBNotificationTopic:
+    Description: Notification SNS
+    Value: !Ref DBNotificationTopic
