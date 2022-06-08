@@ -18,17 +18,13 @@ source:
     branch: main
     repository: https://github.com/jonesaws/copilot-multiservice
     # Optional: specify the name of an existing CodeStar Connections connection.
-    # connection_name: a-connection
+    connection_name: CopilotRepoConnection
 
 # This section defines the order of the environments your pipeline will deploy to.
 stages:
     - # The name of the environment.
       name: test
       deployments:
-        #database:
-        #  stack_name: multiappdb
-        #  template_path: infrastructure/database.yaml
-        #  template_config: infrastructure/database.params.json
         web:
           depends_on: [scheduler]
         scheduler:

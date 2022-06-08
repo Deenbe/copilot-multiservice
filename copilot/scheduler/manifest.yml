@@ -39,6 +39,8 @@ exec: true     # Enable running commands in your container.
 #environments:
 #  test:
 #    count: 2               # Number of tasks to run for the "test" environment.
+deployment:
+  rolling: recreate
 
 observability:
   tracing: awsxray
