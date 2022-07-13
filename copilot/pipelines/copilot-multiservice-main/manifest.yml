@@ -16,7 +16,7 @@ source:
   # Additional properties that further specify the location of the artifacts.
   properties:
     branch: main
-    repository: https://github.com/jonesaws/copilot-multiservice
+    repository: https://github.com/Deenbe/copilot-multiservice.git
     # Optional: specify the name of an existing CodeStar Connections connection.
     connection_name: CopilotRepoConnection
 
