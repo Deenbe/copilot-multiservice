@@ -8,8 +8,9 @@
 
 ## Look at the application
 
-Simple [flask app](./app.py), that just displays some dynamic html generated from [a template](./index.html)
-A single [docker file](./Dockerfile)
+Simple [flask app](./app.py), that just displays some dynamic html generated from [a template](./index.html).
+
+A single [docker file](./Dockerfile) reused for all variations of the service.
 
 ## Recap of co-pilot concepts
 
@@ -69,13 +70,16 @@ Now we can deploy directly from here using copilot svc deploy, but best practice
 copilot pipeline deploy --app webapp --environments test --name copilot-multiservice-main
 ```
 
-Switch to confirm it completes, then ec2/load balancers.
+Checkout Cloudformation in the console to confirm it completes, then ec2/load balancers to find the load balancer url.
 
+In the browser, checkout the following urls to confirm that its working as expected.
+```
 http://<LOAD BALANCER_URL>/scheduler
 http://<LOAD BALANCER_URL>/web
 http://<LOAD BALANCER_URL>/admin
+```
 
-Now push a change.
+Now push a change and watch the magic happen.
 
 ## Cleaning up
 When its time to tear it down, we can:
